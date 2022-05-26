@@ -1,6 +1,6 @@
 package org.serratec.java02backend.projeto06.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,12 +33,12 @@ public class Livro {
 	private String autor;
 	
 	@Column(name = "livro_dt_publicacao")
-	private Date dataPublicacao;
+	private LocalDate dataPublicacao;
 
 	public Livro() {}
 
 	public Livro(@NotNull @Size(min = 5, max = 30) String titulo, @NotNull @Size(min = 3, max = 20) String genero,
-			@NotNull @Size(min = 10, max = 40) String autor, Date dataPublicacao) {
+			@NotNull @Size(min = 10, max = 40) String autor, LocalDate dataPublicacao) {
 		this.titulo = titulo;
 		this.genero = genero;
 		this.autor = autor;
@@ -69,11 +69,11 @@ public class Livro {
 		this.autor = autor;
 	}
 
-	public Date getDataPublicacao() {
+	public LocalDate getDataPublicacao() {
 		return dataPublicacao;
 	}
 
-	public void setDataPublicacao(Date dataPublicacao) {
+	public void setDataPublicacao(LocalDate dataPublicacao) {
 		this.dataPublicacao = dataPublicacao;
 	}	
 }

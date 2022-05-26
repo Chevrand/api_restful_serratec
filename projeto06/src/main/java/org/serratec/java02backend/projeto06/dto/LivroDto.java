@@ -1,17 +1,17 @@
 package org.serratec.java02backend.projeto06.dto;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class LivroDto {
 	
 	private String titulo;
 	private String genero;
 	private String autor;
-	private Date dataPublicacao;
+	private LocalDate dataPublicacao;
 	
 	public LivroDto() {}
 
-	public LivroDto(String titulo, String genero, String autor, Date dataPublicacao) {
+	public LivroDto(String titulo, String genero, String autor, LocalDate dataPublicacao) {
 		this.titulo = titulo;
 		this.genero = genero;
 		this.autor = autor;
@@ -42,11 +42,11 @@ public class LivroDto {
 		this.autor = autor;
 	}
 
-	public Date getDataPublicacao() {
+	public LocalDate getDataPublicacao() {
 		return dataPublicacao;
 	}
 
-	public void setDataPublicacao(Date dataPublicacao) {
+	public void setDataPublicacao(LocalDate dataPublicacao) {
 		this.dataPublicacao = dataPublicacao;
 	}
 
