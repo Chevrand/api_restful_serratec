@@ -104,7 +104,7 @@ public class EmailService {
 			
 			emailSender.send(message);
 		} catch(Exception e) {
-			throw new EmailException(e);
+			throw new EmailException("Não foi possível enviar o email!");
 		}
 	}
 

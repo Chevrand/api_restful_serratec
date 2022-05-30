@@ -7,6 +7,7 @@ import java.util.Optional;
 import javax.mail.MessagingException;
 
 import org.serratec.java02backend.projeto07.dto.ServicoDto;
+import org.serratec.java02backend.projeto07.dto.ServicoRelatorioDto;
 import org.serratec.java02backend.projeto07.exception.EmailException;
 import org.serratec.java02backend.projeto07.exception.ServicoException;
 import org.serratec.java02backend.projeto07.model.Carro;
@@ -36,6 +37,23 @@ public class ServicoService {
 		dto.setValor(model.getValor());
 		dto.setData(model.getData());
 		dto.setIdCarro(model.getCarro().getIdCarro());
+		
+		return dto;
+	}
+	
+	public ServicoRelatorioDto toRelatorioDto(Servico model) {
+		ServicoRelatorioDto dto = new ServicoRelatorioDto();
+		
+		dto.setIdServico(model.getIdServico());
+		dto.setNomeCliente(model
+				.getCarro()
+				.getCliente()
+				.getNome());
+		dto.setModeloCarro(model
+				.getCarro()
+				.getModelo());
+		dto.setDescricao(model.getDescricao());
+		dto.setValor(model.getValor());
 		
 		return dto;
 	}
@@ -76,8 +94,16 @@ public class ServicoService {
 		return listaDto;
 	}
 	
-	public List<Servico> listFiveLast() {			
-		return servicoRepository.findTop5ByOrderByIdServicoDesc();
+	public List<ServicoRelatorioDto> listFiveLast() {
+		List<ServicoRelatorioDto> listaDto = new ArrayList<>();
+		List<Servico> listaModel = servicoRepository.findTop5ByOrderByIdServicoDesc();
+		
+		for(Servico model : listaModel) {
+			ServicoRelatorioDto dto = toRelatorioDto(model);
+			listaDto.add(dto);
+		}
+		
+		return listaDto;
 	}
 	
 	public ServicoDto findById(Integer idServico) throws ServicoException {

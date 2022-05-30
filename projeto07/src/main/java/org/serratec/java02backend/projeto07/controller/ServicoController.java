@@ -1,13 +1,11 @@
 package org.serratec.java02backend.projeto07.controller;
 
 import java.util.List;
-
 import javax.mail.MessagingException;
-
 import org.serratec.java02backend.projeto07.dto.ServicoDto;
+import org.serratec.java02backend.projeto07.dto.ServicoRelatorioDto;
 import org.serratec.java02backend.projeto07.exception.EmailException;
 import org.serratec.java02backend.projeto07.exception.ServicoException;
-import org.serratec.java02backend.projeto07.model.Servico;
 import org.serratec.java02backend.projeto07.service.ServicoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -38,7 +36,7 @@ public class ServicoController {
 	}
 	
 	@GetMapping("/list-5-last")
-	public ResponseEntity<List<Servico>> list5Last() {
+	public ResponseEntity<List<ServicoRelatorioDto>> list5Last() {
 		return ResponseEntity.ok(servicoService.listFiveLast());
 	}
 	
