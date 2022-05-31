@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import javax.mail.MessagingException;
 
+import org.serratec.java02backend.projeto07.dto.RelatorioDto;
 import org.serratec.java02backend.projeto07.dto.ServicoDto;
 import org.serratec.java02backend.projeto07.dto.ServicoRelatorioDto;
 import org.serratec.java02backend.projeto07.exception.EmailException;
@@ -154,6 +155,10 @@ public class ServicoService {
 		}
 		
 		throw new ServicoException("Não foi possível encontrar o servico desejado!");
+	}
+	
+	public List<RelatorioDto> relatorio() {
+		return servicoRepository.relatorio();
 	}
 
 }

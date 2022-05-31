@@ -2,6 +2,8 @@ package org.serratec.java02backend.projeto07.controller;
 
 import java.util.List;
 import javax.mail.MessagingException;
+
+import org.serratec.java02backend.projeto07.dto.RelatorioDto;
 import org.serratec.java02backend.projeto07.dto.ServicoDto;
 import org.serratec.java02backend.projeto07.dto.ServicoRelatorioDto;
 import org.serratec.java02backend.projeto07.exception.EmailException;
@@ -56,6 +58,11 @@ public class ServicoController {
 	public ResponseEntity<String> delete(@PathVariable Integer idServico)
 			throws ServicoException {
 		return ResponseEntity.ok(servicoService.delete(idServico));
+	}
+	
+	@GetMapping("/relatorio")
+	public List<RelatorioDto> relatorio() {
+		return servicoService.relatorio();
 	}
 
 }
