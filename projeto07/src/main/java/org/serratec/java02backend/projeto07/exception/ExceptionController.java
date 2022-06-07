@@ -8,6 +8,14 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class ExceptionController {
 	
+	@ExceptionHandler(value = { UsuarioException.class })
+	protected ResponseEntity<Object> naoEncontrado(UsuarioException ex) {
+		ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST);
+		apiError.setMessage(ex.getMessage());
+		apiError.setDebugMessage(ex.getLocalizedMessage());
+		return buildResponseEntity(apiError);
+	}
+	
 	@ExceptionHandler(value = { ServicoException.class })
 	protected ResponseEntity<Object> naoEncontrado(ServicoException ex) {
 		ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST);
